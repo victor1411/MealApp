@@ -3,12 +3,12 @@ import {Pressable, View, Text, StyleSheet, Platform, Dimensions} from 'react-nat
 /* On the CategoryGridTile we are getting props from folder 
 data on the file dummy-data.js we use destructuring to get
 individual values   */
-function CategoryGridTile({title, color}) {
+function CategoryGridTile({title, color, onPress}) {
     return (
         <View style = {styles.gridItem}>
             {/* Pressable is a react-native component that 
             allow a view or text to be press using the 
-            onPress function I used the arrow function 
+            onPress prop I used the arrow function 
             to return styles conditionally because the 
             andrroid_ripple only affect android devices
             pressable calls the function internally and passes
@@ -20,6 +20,10 @@ function CategoryGridTile({title, color}) {
                 styles.button, 
                 pressed ? styles.buttonPressed: null,
                 ]}
+                /*A onPress Function gotten from the 
+                parent component(CategoriesScreen) and  is passed 
+                through props to the onPress prop of the pressable   */
+                onPress ={onPress}
                 >
                 <View style ={[styles.innerContainer, {backgroundColor: color}]}>
                     <Text style = {styles.title}>{title}</Text>
