@@ -5,9 +5,9 @@ import  CategoryGridTile from '../components/CategoryGridTile'
 import {CATEGORIES} from '../data/dummy-data';
 
 /* Any components that is bound to a screen (Stack.Screen) like
-CategoriesScreen and MealsOverviewScreen we get a special prop
+CategoriesScreen and MealsOverviewScreen  get a special prop
 from react-navigation the prop value that we get (navigation)
- is an object with a method that can be used for navigating 
+is an object with a method that can be used for navigating 
  between screen */
 function CategoriesScreen({navigation}) {
     
@@ -15,12 +15,19 @@ function CategoriesScreen({navigation}) {
 a CategoryGridTile element, using the incoming itemData*/
 function renderCategoryItem(itemData) {
 
+    /* the function handles the switching of screen */
     function pressHandler() {
 /* the navigate method is provide by react-navigation on the 
 navigation object which we received as a prop and navigate want
-the name of the component we want to navigate to which is gotten
-from Stack.Screen on the App component*/
-        navigation.navigate("MealsOverview");
+the name of the component we want to navigate  which is gotten
+from Stack.Screen on the App component the navidate method take 
+two values  first is the  name of the component you want to navigate to 
+which is require parameter value and the second is opitional which
+is passed in as an object parameter value the object allow we
+to define the parametre that should be passed to the name component*/
+        navigation.navigate("MealsOverview", {
+            categoryId:itemData.item.id,
+        });
     }
 
 
